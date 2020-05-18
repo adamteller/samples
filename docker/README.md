@@ -1,4 +1,4 @@
-<img src="../images/GTO_65_BorrowedFromNet.jpg" alt="Front Grille of 1965 Pontiac GTO that I downloaded from the internet" title="Front Grille of 1965 Pontiac GTO that I downloaded from the internet" width="640" height="480" />
+<img src="../images/GTO_65_BorrowedFromNet.jpg" alt="Front Grille of 1965 Pontiac GTO that I downloaded from the internet" title="Front Grille of 1965 Pontiac GTO that I downloaded from the internet" width="400" height="300" />
 
 # Here are some notes, observations, and non-project-specific docker infos.
 
