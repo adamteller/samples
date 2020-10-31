@@ -8,3 +8,5 @@
     $noun = 'Child';
 
     printf('Check on the %s', $noun);
+    echo "This is the way" .PHP_EOL;
+    
