@@ -18,7 +18,7 @@ object FibonacciPrime extends App {
         var fibonums = ArrayBuffer[Int]()
 
         // Push in values 0 and 1 to the array
-        fibonums += (0,1)
+        fibonums += 0 += 1
 
         for (f <- 0 to theNumber) {
             print(s"${fibonums(f)} ")
