@@ -11,11 +11,9 @@ object Fibonacci extends App {
         
         val end: Int = endStr.toInt
         var fibonums = ArrayBuffer[Int]()
-        //val fibonums = Array( 0, 1)
 
         // Push in values 0 and 1 to the array
         fibonums += 0 += 1
-        //fibonums += 1
 
         /**
         * The range "x until y", is not inclusive of y.
