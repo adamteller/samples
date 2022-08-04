@@ -21,9 +21,7 @@ function reverseArrayInPlace(arrObj) {
 }
 
 let myArrObj = { arr: [89, 90, 91] };
-console.log("before reversal");
-console.log(myArrObj.arr);  // output: [89, 90, 91]
+console.log("Before reversal:", myArrObj.arr);  // [89, 90, 91]
 
 reverseArrayInPlace(myArrObj);
-console.log("after reversal");
-console.log(myArrObj.arr);  // output: [91, 90, 89]
+console.log("After  reversal:", myArrObj.arr);  // [91, 90, 89]
