@@ -27,4 +27,4 @@ console.log(myArrObj.arr);  // output: [89, 90, 91]
 
 reverseArrayInPlace(myArrObj);
 console.log("after reversal");
-console.log(myArrObj.arr); // output: [91, 90, 89]
+console.log(myArrObj.arr);  // output: [91, 90, 89]
