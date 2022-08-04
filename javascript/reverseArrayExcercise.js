@@ -21,10 +21,10 @@ function reverseArrayInPlace(arrObj) {
   arrObj.arr = reverseArray(arrObj.arr);
 }
 
-let myArr2 = { arr: [89, 90, 91] };
+let myArrObj = { arr: [89, 90, 91] };
 console.log("before reversal");
-console.log(myArr2.arr);
+console.log(myArrObj.arr);  // output: [89, 90, 91]
 
-reverseArrayInPlace(myArr2);
+reverseArrayInPlace(myArrObj);
 console.log("after reversal");
-console.log(myArr2.arr);
+console.log(myArrObj.arr); // output: [91, 90, 89]
