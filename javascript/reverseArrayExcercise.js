@@ -1,7 +1,6 @@
 /**
  * Coding excercise from "Eloquent Javascript" book.
- * Take an array and reverse it, even though javascript really does have
- * a "reverse" method for arrays -
+ * Reverse an array, even though javascript has a "reverse" method for arrays.
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse
  * Hence the code below is just for practice (reinvents the wheel eh?)
  * ReverseArrayInPlace shows that array type stays same, 
