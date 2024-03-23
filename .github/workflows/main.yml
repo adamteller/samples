@@ -7,16 +7,18 @@ on:
         type: environment
         description: Select the environment
       is_dry_run:
-        type: boolean
+        type: choice
         description: Dry Run True or False
-        default: true
-        required: true
+        options:
+        - 'true'
+        - 'false'
       action_choice:
         type: choice
         description: Stop or Start Instances?
         options:
         - stop-instances
         - start-instances
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -24,7 +26,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Dry run  
-        if: ${{ inputs.is_dry_run == true && 'true' }} 
+        if: ${{ inputs.is_dry_run == 'true' }} 
         run: | 
           echo "This is a dry-run"
           echo "Not doing the real work"
