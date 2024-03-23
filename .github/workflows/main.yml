@@ -4,8 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        type: environment
+        type: choice
         description: Select the environment
+        default: jersey
+        options:
+        - statenisland
+        - jersey
       is_dry_run:
         type: choice
         description: Dry Run True or False
@@ -40,7 +44,7 @@ jobs:
       - name: Not dry run
         if: ${{ inputs.is_dry_run == 'false' }}
         run: |
-          echo '${{ steps.yaml2json.outputs.output }}' | jq '.people.jersey.names'
-          echo "Command: ${{ github.event.inputs.action_choice }}"
+          INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq '.people.${{inputs.environment}}.names')
+          echo "Command: ${{ inputs.action_choice }} $INSTANCES"
       - name: closing   
         run: echo "🍏 This job's status is ${{ job.status }}."
