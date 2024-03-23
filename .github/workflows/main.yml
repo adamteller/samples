@@ -10,6 +10,7 @@ on:
         type: boolean
         description: Dry Run True or False
         default: True
+        required: true
       action_choice:
         type: choice
         description: Stop or Start Instances?
