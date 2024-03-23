@@ -44,7 +44,7 @@ jobs:
       - name: Not dry run
         if: ${{ inputs.is_dry_run == 'false' }}
         run: |
-          INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq '.people.${{inputs.environment}}.names')
+          INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq -r '.people.${{inputs.environment}}.names')
           echo "Command: ${{ inputs.action_choice }} $INSTANCES"
       - name: closing   
         run: echo "🍏 This job's status is ${{ job.status }}."
