@@ -8,7 +8,8 @@ on:
         description: Select the environment
       boolean:
         type: boolean
-        description: True or False
+        description: Dry Run True or False
+        default: True
       choice:
         type: choice
         description: Make a choice
