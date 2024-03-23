@@ -9,7 +9,7 @@ on:
       is_dry_run:
         type: boolean
         description: Dry Run True or False
-        default: True
+        default: true
         required: true
       action_choice:
         type: choice
@@ -24,12 +24,12 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Dry run  
-        if: ${{ github.event.inputs.is_dry_run }} 
+        if: ${{ inputs.is_dry_run && 'true'}} 
         run: | 
           echo "This is a dry-run"
           echo "Not doing the real work"
       - name: Not dry run
-        if: ${{ github.event.inputs.is_dry_run == false }} 
+        if: ${{ inputs.is_dry_run && 'false' }} 
         run: |
           echo "💡 The ${{ github.repository }} repository cloned to the runner."
           echo "Command: ${{ github.event.inputs.action_choice }}"
