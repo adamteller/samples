@@ -40,7 +40,7 @@ jobs:
       - name: Not dry run
         if: ${{ inputs.is_dry_run == 'false' }}
         run: |
-          echo "${{ steps.yaml2json.outputs.output }}" | jq '.people.jersey.names'
+          echo ${{ steps.yaml2json.outputs.output }} | jq '.people.jersey.names'
           echo "Command: ${{ github.event.inputs.action_choice }}"
       - name: closing   
         run: echo "🍏 This job's status is ${{ job.status }}."
