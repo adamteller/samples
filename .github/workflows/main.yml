@@ -1,5 +1,5 @@
 name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: ${{ github.actor }} is testing out GitHub Actions
 on: 
   workflow_dispatch:
     inputs:
@@ -7,9 +7,7 @@ on:
         type: choice
         description: Select the environment
         default: jersey
-        options:
-        - statenisland
-        - jersey
+        options: ["jersey", "statenisland"]
       is_dry_run:
         type: choice
         description: Dry Run True or False
@@ -39,9 +37,8 @@ jobs:
       - name: Dry run  
         if: ${{ inputs.is_dry_run == 'true' }} 
         run: | 
-          echo "This is a dry-run"
-          echo "Not doing the real work"
-      - name: Not dry run
+          echo "This is a Dry run, not doing the real work."
+      - name: Run for real
         if: ${{ inputs.is_dry_run == 'false' }}
         run: |
           INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq -r '.people.${{inputs.environment}}.names')
