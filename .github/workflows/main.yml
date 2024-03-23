@@ -24,12 +24,12 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Dry run  
-        if: ${{ inputs.is_dry_run && 'true'}} 
+        if: ${{ inputs.is_dry_run == true && 'true' }} 
         run: | 
           echo "This is a dry-run"
           echo "Not doing the real work"
       - name: Not dry run
-        if: ${{ inputs.is_dry_run && 'false' }} 
+        if: ${{ inputs.is_dry_run == 'false' }} 
         run: |
           echo "💡 The ${{ github.repository }} repository cloned to the runner."
           echo "Command: ${{ github.event.inputs.action_choice }}"
