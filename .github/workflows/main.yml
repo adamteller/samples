@@ -25,14 +25,23 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+      - name: Collect Data from Config
+        uses: fabasoad/data-format-converter-action@v0
+        id: yaml2json
+        with:
+          input: ".github/people-list/people.yml"
+          from: "yaml"
+          to: "json"
       - name: Dry run  
         if: ${{ inputs.is_dry_run == 'true' }} 
         run: | 
           echo "This is a dry-run"
           echo "Not doing the real work"
       - name: Not dry run
-        if: ${{ inputs.is_dry_run == 'false' }} 
+        if: ${{ inputs.is_dry_run == 'false' }}
         run: |
           echo "💡 The ${{ github.repository }} repository cloned to the runner."
+          echo "${{ steps.yaml2json.outputs.output }}"
           echo "Command: ${{ github.event.inputs.action_choice }}"
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: closing   
+        run: echo "🍏 This job's status is ${{ job.status }}."
