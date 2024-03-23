@@ -20,7 +20,6 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v4
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
@@ -28,5 +27,5 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-          echo "Command: ${{ github.event.inputs.action_choice }}
+          echo "Command: ${{ github.event.inputs.action_choice }}"
       - run: echo "🍏 This job's status is ${{ job.status }}."
