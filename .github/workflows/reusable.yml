@@ -22,9 +22,6 @@ jobs:
           to: "json"
       - name: Run for real
         run: |
-          INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq -r '.people.jersey.names')
-          # echo "INSTANCES=$INSTANCES" >> "$GITHUB_ENV"
+          INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq -r '.people.${{inputs.location}}.names')
           echo "Command = aws ec2 ${{ inputs.command }} --instance-ids $INSTANCES"
-
-      - name: closing   
-        run: echo "🍏 This job's status is ${{ job.status }}."
+          echo "🍏 This job's status is ${{ job.status }}."

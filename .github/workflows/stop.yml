@@ -1,5 +1,5 @@
-name: Stop in to see Jersey People
-run-name: ${{ github.actor }} is testing out GitHub Actions
+name: Stop Instances in Jersey
+run-name: ${{ github.actor }} switches Stop for Jersey
 on: 
   push
 
@@ -8,3 +8,4 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with: 
       command: 'stop-instances'
+      location: jersey

@@ -1,5 +1,5 @@
-name: Start to drive away from New Jersey
-run-name: ${{ github.actor }} is testing out GitHub Actions
+name: Start instances in Staten Island
+run-name: ${{ github.actor }} switches Start for Staten
 on: 
   push
 
@@ -8,3 +8,4 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with: 
       command: 'start-instances'
+      location: 'statenisland'
