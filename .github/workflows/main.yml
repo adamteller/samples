@@ -20,7 +20,7 @@ on:
         options:
         - stop-instances
         - start-instances
-      override_instances:
+      overrides:
         description: Override Configured List
         required: false   
 
@@ -45,6 +45,12 @@ jobs:
         if: ${{ inputs.is_dry_run == 'false' }}
         run: |
           INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq -r '.people.${{inputs.environment}}.names')
+        # if an override string of instances were given.. use that
+        if: inputs.overrides != ''
+        run: |
+          INSTANCES={{ inputs.overrides }}
+      - name: run_command
+        run: |
           echo "Command: ${{ inputs.action_choice }} $INSTANCES"
-      - name: closing   
-        run: echo "🍏 This job's status is ${{ job.status }}."
+          echo "🍏 This job's status is ${{ job.status }}."
+
