@@ -6,6 +6,9 @@ on:
       command:
         required: true
         type: string
+      location:
+        required: true
+        type: string
 
 jobs:
   reusable_workflow_job:
