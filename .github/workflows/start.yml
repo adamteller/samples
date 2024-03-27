@@ -7,5 +7,4 @@ jobs:
   CallStart:
     uses: ./.github/workflows/reusable.yml
     with: 
-      command: 'start-instances' 
-      location: 'statenisland'
+      command: 'start-instances', location: 'statenisland'
