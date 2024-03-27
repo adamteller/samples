@@ -1,5 +1,5 @@
-name: Demo with Override
-run-name: ${{ github.actor }} tests override
+name: Manually Start or Stop Instances
+run-name: Choose start/stop on specific instances
 on: 
   workflow_dispatch:
     inputs:
