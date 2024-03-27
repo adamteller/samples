@@ -22,7 +22,7 @@ on:
         - start-instances
       override_instances:
         description: Override Configured List
-       required: false   
+        required: false   
 
 jobs:
   Explore-GitHub-Actions:
