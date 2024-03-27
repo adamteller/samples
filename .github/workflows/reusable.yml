@@ -32,8 +32,8 @@ jobs:
           echo "INSTANCES=$INSTANCES" >> $GITHUB_ENV
       - name: Instances From Overrides
         if: ${{ inputs.overrides != '' }}
-          run: |
-            echo "INSTANCES=${{ inputs.overrides }}" >> $GITHUB_ENV
+        run: |
+          echo "INSTANCES=${{ inputs.overrides }}" >> $GITHUB_ENV
       - name: run_command
         run: |
           echo "Command: aws ec2 ${{ inputs.command }} --instance-ids ${{ env.INSTANCES }}"
