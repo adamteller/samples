@@ -1,5 +1,5 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions
+name: Demo with Override
+run-name: ${{ github.actor }} tests override
 on: 
   workflow_dispatch:
     inputs:
@@ -20,6 +20,9 @@ on:
         options:
         - stop-instances
         - start-instances
+      override_instances:
+        description: Override Configured List
+       required: false   
 
 jobs:
   Explore-GitHub-Actions:
