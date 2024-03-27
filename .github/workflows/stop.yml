@@ -9,3 +9,4 @@ jobs:
     with: 
       command: 'stop-instances'
       location: 'jersey'
+      overrides: 'hayley jonah'

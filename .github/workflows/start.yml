@@ -9,3 +9,4 @@ jobs:
     with: 
       command: 'start-instances'
       location: 'statenisland'
+      overrides: 'hurstolds impala skylark'

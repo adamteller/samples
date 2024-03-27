@@ -9,6 +9,9 @@ on:
       location:
         required: true
         type: string
+      overrides:
+        required: False
+        type: string  
 
 jobs:
   reusable_workflow_job:
@@ -23,8 +26,16 @@ jobs:
           input: ".github/workflows/people-list/people.yml"
           from: "yaml"
           to: "json"
-      - name: Run for real
+      - name: Instances From Config
         run: |
           INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq -r '.people.${{inputs.location}}.names')
-          echo "Command = aws ec2 ${{ inputs.command }} --instance-ids $INSTANCES"
-          echo "🍏 This job's status is ${{ job.status }}."
+          echo "INSTANCES=$INSTANCES" >> $GITHUB_ENV
+      - name: Instances From Overrides
+        if: ${{ inputs.overrides != '' }}
+          run: |
+            echo "INSTANCES=${{ inputs.overrides }}" >> $GITHUB_ENV
+      - name: run_command
+        run: |
+          echo "Command: aws ec2 ${{ inputs.command }} --instance-ids ${{ env.INSTANCES }}"
+          echo "🍏 This job's status is ${{ job.status }}."      
+
