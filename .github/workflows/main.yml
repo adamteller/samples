@@ -46,7 +46,7 @@ jobs:
         run: |
           INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq -r '.people.${{inputs.environment}}.names')
         # if an override string of instances were given.. use that
-        if: inputs.overrides != ''
+        if: ${{ inputs.overrides != '' }}
         run: |
           INSTANCES={{ inputs.overrides }}
       - name: run_command
