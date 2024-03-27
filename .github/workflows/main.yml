@@ -45,6 +45,7 @@ jobs:
         if: ${{ inputs.is_dry_run == 'false' }}
         run: |
           INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq -r '.people.${{inputs.environment}}.names')
+          echo "INSTANCES=$INSTANCES" >> $GH_ENV
         # if an override string of instances were given.. use that
       - name: Check overrides exist  
         if: ${{ inputs.overrides != '' }}
@@ -52,6 +53,6 @@ jobs:
           INSTANCES={{ inputs.overrides }}
       - name: run_command
         run: |
-          echo "Command: ${{ inputs.action_choice }} $INSTANCES"
+          echo "Command: ${{ inputs.action_choice }} ${{ env.INSTANCES }}"
           echo "🍏 This job's status is ${{ job.status }}."
 
