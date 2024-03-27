@@ -27,6 +27,7 @@ jobs:
           from: "yaml"
           to: "json"
       - name: Instances From Config
+        if: ${{ inputs.overrides == '' }}
         run: |
           INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq -r '.people.${{inputs.location}}.names')
           echo "INSTANCES=$INSTANCES" >> $GITHUB_ENV
