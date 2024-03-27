@@ -50,7 +50,7 @@ jobs:
       - name: Check overrides exist  
         if: ${{ inputs.overrides != '' }}
         run: |
-          INSTANCES={{ inputs.overrides }}
+          echo "INSTANCES=${{ inputs.overrides }}" >> $GITHUB_ENV
       - name: run_command
         run: |
           echo "Command: ${{ inputs.action_choice }} ${{ env.INSTANCES }}"
