@@ -4,7 +4,7 @@ on:
   push
 
 jobs:
-  Call Start Workflow:
+  CallStartWorkflow:
     uses: ./.github/workflows/reusable.yml
     with: 
       command: 'start-instances'
