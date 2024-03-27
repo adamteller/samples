@@ -1,10 +1,10 @@
-name: Drive away from New Jersey
-run-name: ${{ github.actor }} is testing out GitHub Actions
+name: GitHub Actions Reusable
+run-name: ${{ github.actor }} is testing out reusable workflows
 on: 
-  push
+  workflow_call:
 
 jobs:
-  Explore-GitHub-Actions:
+  reusable_workflow_job:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -19,6 +19,6 @@ jobs:
       - name: Run for real
         run: |
           INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq -r '.people.jersey.names')
-          echo "Command: Say later on to $INSTANCES"
+          echo "INSTANCES=$INSTANCES" >> "$GITHUB_ENV"
       - name: closing   
-        run: echo "Start job's status is ${{ job.status }}."
+        run: echo "🍏 This job's status is ${{ job.status }}."

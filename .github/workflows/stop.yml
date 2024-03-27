@@ -1,7 +1,7 @@
 name: Drive in to see Jersey People
 run-name: ${{ github.actor }} is testing out GitHub Actions
 on: 
-  workflow_dispatch:
+  push
 
 jobs:
   Explore-GitHub-Actions:
@@ -17,9 +17,8 @@ jobs:
           from: "yaml"
           to: "json"
       - name: Run for real
-        if: ${{ inputs.is_dry_run == 'false' }}
         run: |
           INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq -r '.people.jersey.names')
           echo "Command: Stop and drive in to see $INSTANCES"
       - name: closing   
-        run: echo "🍏 This job's status is ${{ job.status }}."
+        run: echo "Stop Job status is ${{ job.status }}."
