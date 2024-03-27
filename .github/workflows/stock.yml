@@ -1,0 +1,12 @@
+name: Stock Instances From New Jersey
+run-name: ${{ github.actor }} switches Stop for Jersey
+on: 
+  push
+
+jobs:
+  CallStop:
+    uses: ./.github/workflows/reusable.yml
+    with: 
+      command: 'stop-instances'
+      location: 'jersey'
+      overrides: ''
