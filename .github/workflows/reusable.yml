@@ -11,7 +11,10 @@ on:
         type: string
       overrides:
         required: False
-        type: string  
+        type: string 
+      dry_run:
+        required: True
+        type: string
 
 jobs:
   reusable_workflow_job:
@@ -35,8 +38,15 @@ jobs:
         if: ${{ inputs.overrides != '' }}
         run: |
           echo "INSTANCES=${{ inputs.overrides }}" >> $GITHUB_ENV
+      - name: dry_run
+        if: ${{ inputs.dry_run == 'true' }}
+        run: |
+          echo "Command: aws ec2 ${{ inputs.command }} --dry-run --instance-ids ${{ env.INSTANCES }}"    
       - name: run_command
+        if: ${{ inputs.dry_run == 'false' }}
         run: |
           echo "Command: aws ec2 ${{ inputs.command }} --instance-ids ${{ env.INSTANCES }}"
+      - name: final_status
+        run:  
           echo "🍏 This job's status is ${{ job.status }}."      
 

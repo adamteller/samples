@@ -25,34 +25,11 @@ on:
         required: false   
 
 jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - name: Collect Data from Config
-        uses: fabasoad/data-format-converter-action@v0
-        id: yaml2json
-        with:
-          input: ".github/workflows/people-list/people.yml"
-          from: "yaml"
-          to: "json"
-      - name: Dry run  
-        if: ${{ inputs.is_dry_run == 'true' }} 
-        run: | 
-          echo "This is a Dry run, not doing the real work."
-      - name: Run for real
-        if: ${{ inputs.is_dry_run == 'false' }}
-        run: |
-          INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq -r '.people.${{inputs.environment}}.names')
-          echo "INSTANCES=$INSTANCES" >> $GITHUB_ENV
-        # if an override string of instances were given.. use that
-      - name: Check overrides exist  
-        if: ${{ inputs.overrides != '' }}
-        run: |
-          echo "INSTANCES=${{ inputs.overrides }}" >> $GITHUB_ENV
-      - name: run_command
-        run: |
-          echo "Command: ${{ inputs.action_choice }} ${{ env.INSTANCES }}"
-          echo "🍏 This job's status is ${{ job.status }}."
-
+  ManualCallStop:
+    uses: ./.github/workflows/reusable.yml
+    with: 
+      command: ${{ inputs.action_choice }}
+      location: ${{ inputs.environment }}
+      overrides: ${{ inputs.overrides }}
+      dry_run: {{ inputs.is_dry_run }}
+      
