@@ -7,5 +7,5 @@ jobs:
   CallStop:
     uses: ./.github/workflows/reusable.yml
     with: 
-      command: 'stop-instances'
+      command: 'stop-instances' 
       location: jersey
