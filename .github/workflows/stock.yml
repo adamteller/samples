@@ -1,5 +1,5 @@
 name: Stock Instances From New Jersey
-run-name: ${{ github.actor }} switches Stop for Jersey
+run-name: use config list instances for Jersey
 on: 
   push
 
