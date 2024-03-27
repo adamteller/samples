@@ -23,7 +23,7 @@ jobs:
       - name: Run for real
         run: |
           INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq -r '.people.jersey.names')
-          echo "Command = {{inputs.command}}"
+          echo "Command = ${{ inputs.command }}"
           echo "INSTANCES=$INSTANCES" >> "$GITHUB_ENV"
 
       - name: closing   
