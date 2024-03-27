@@ -10,3 +10,4 @@ jobs:
       command: 'stop-instances'
       location: 'jersey'
       overrides: 'hayley jonah'
+      dry_run: 'false'

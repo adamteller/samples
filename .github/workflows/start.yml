@@ -10,3 +10,4 @@ jobs:
       command: 'start-instances'
       location: 'statenisland'
       overrides: 'hurstolds impala skylark'
+      dry_run: 'false'

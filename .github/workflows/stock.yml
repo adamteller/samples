@@ -10,3 +10,4 @@ jobs:
       command: 'stop-instances'
       location: 'jersey'
       overrides: ''
+      dry_run: 'false'

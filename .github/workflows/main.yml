@@ -31,5 +31,4 @@ jobs:
       command: ${{ inputs.action_choice }}
       location: ${{ inputs.environment }}
       overrides: ${{ inputs.overrides }}
-      dry_run: {{ inputs.is_dry_run }}
-      
+      dry_run: ${{ inputs.is_dry_run }}
