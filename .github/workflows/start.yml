@@ -1,10 +1,10 @@
-name: Drive away from New Jersey
+name: Start to drive away from New Jersey
 run-name: ${{ github.actor }} is testing out GitHub Actions
 on: 
   push
 
 jobs:
   Call Start Workflow:
-    uses: .github/workflows/reusable.yml@master
+    uses: ./.github/workflows/reusable.yml@master
     with: 
       command: 'start-instances'
