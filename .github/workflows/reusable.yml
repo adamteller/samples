@@ -2,6 +2,10 @@ name: GitHub Actions Reusable
 run-name: ${{ github.actor }} is testing out reusable workflows
 on: 
   workflow_call:
+    inputs:
+      command:
+        required: true
+        type: string
 
 jobs:
   reusable_workflow_job:
@@ -19,6 +23,8 @@ jobs:
       - name: Run for real
         run: |
           INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq -r '.people.jersey.names')
+          echo "Command = {{inputs.command}}"
           echo "INSTANCES=$INSTANCES" >> "$GITHUB_ENV"
+
       - name: closing   
         run: echo "🍏 This job's status is ${{ job.status }}."

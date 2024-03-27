@@ -4,21 +4,7 @@ on:
   push
 
 jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - name: Collect Data from Config
-        uses: fabasoad/data-format-converter-action@v0
-        id: yaml2json
-        with:
-          input: ".github/workflows/people-list/people.yml"
-          from: "yaml"
-          to: "json"
-      - name: Run for real
-        run: |
-          INSTANCES=$(echo '${{ steps.yaml2json.outputs.output }}' | jq -r '.people.jersey.names')
-          echo "Command: Say later on to $INSTANCES"
-      - name: closing   
-        run: echo "Start job's status is ${{ job.status }}."
+  Call Start Workflow:
+    uses: .github/workflows/reusable.yml@master
+    with: 
+      command: 'start-instances'
