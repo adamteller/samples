@@ -1,0 +1,40 @@
+name: readme-quote
+
+on:
+  push:
+
+jobs:
+  add_quote:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Get an inspirational quote
+      run: |
+        QUOTE="This quote is fetched from a remote api using CURL"
+        echo "$QUOTE"
+
+    - name: Update quote in readme
+      run: |-
+        # Set a default quote if the 
+        echo "${QUOTE:=>Silence is Golden}"
+        # Disable interpreting exclamation mark! as a command
+        histchars=
+        # Set delimiters to variables
+        start_delimiter="<!-- start-quote -->"
+        end_delimiter="<!-- end-quote -->"
+        # Remove previous quote with its delimter
+        sed -i "/$start_delimiter/,/$end_delimiter/d" README.md
+        # Add the new quote to the README file
+        printf "$start_delimiter\n$QUOTE\n$end_delimiter\n" >> README.md
+
+    - name: Commit and push changes if README changed
+      run: |-
+        git diff
+        git config --local user.email "github-actions@example.com"
+        git config --local user.name "GitHub Actions"
+        git add README.md
+        git diff --quiet || (git add README.md && git commit -m "Added new quote to README")
+        git push origin master
