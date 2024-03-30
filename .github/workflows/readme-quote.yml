@@ -10,6 +10,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
 
     - name: Get an inspirational quote
       run: |
@@ -20,6 +23,7 @@ jobs:
       run: |-
         # Set a default quote if the 
         echo "${QUOTE:=>Silence is Golden}"
+        echo "${{ steps.date.outputs.date }}"
         # Disable interpreting exclamation mark! as a command
         histchars=
         # Set delimiters to variables
