@@ -32,7 +32,7 @@ jobs:
         # Remove previous quote with its delimter
         sed -i "/$start_delimiter/,/$end_delimiter/d" README.md
         # Add the new quote to the README file
-        printf "$start_delimiter\n$QUOTE\n$end_delimiter\n" >> README.md
+        printf "$start_delimiter\n$QUOTE\n${{ steps.date.outputs.date }}\n$end_delimiter\n" >> README.md
 
     - name: Commit and push changes if README changed
       run: |-
