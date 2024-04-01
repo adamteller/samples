@@ -32,6 +32,7 @@ jobs:
 
     - name: Commit and push changes if README changed
       run: |-
+        git pull
         git diff
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"
