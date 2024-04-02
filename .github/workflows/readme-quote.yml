@@ -32,12 +32,14 @@ jobs:
     - name: Get Git Diff of README
       id: check_readme_diff
       run: |
-        set +e
+        # set +e
         git diff --quiet README.md
         echo "DIFFEXITCODE=$?" >> $GITHUB_OUTPUT
+        echo "STATUSOUTPUT=$(git status)" >> $GITHUB_OUTPUT
     - name: Commit and push changes if README changed
       run: |
-        echo "Code we got from diff exit is ${{ steps.check_readme_diff.outputs.DIFFEXITCODE }}"
+        echo "Code we got from diff exit is ${{ steps.check_readme_diff.outputs.DIFFEXITCODE }}\
+        and status= ${{ steps.check_readme_diff.outputs.STATUSOUTPUT }}"
         # git config --local user.email "github-actions@example.com"
         # git config --local user.name "GitHub Actions"
         # git diff --quiet || (git add README.md && git commit -m "Added new quote to README")
