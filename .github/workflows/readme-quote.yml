@@ -32,7 +32,7 @@ jobs:
     - name: Get Git Diff of README
       id: check_readme_diff
       run: |
-        # set +e
+        set +e
         git diff --quiet README.md
         echo "DIFFEXITCODE=$?" >> $GITHUB_OUTPUT
         echo "STATUSOUTPUT=$(git status)" >> $GITHUB_OUTPUT
