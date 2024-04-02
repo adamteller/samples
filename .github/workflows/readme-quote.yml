@@ -19,7 +19,7 @@ jobs:
     - name: Update quote in readme
       run: |-
         # Set a default quote if the 
-        echo "${QUOTE:=>Silence is Goldeny but the right words count}"
+        echo "${QUOTE:=>Silence is Golden, and the right words are more better}"
         # Disable interpreting exclamation mark! as a command
         histchars=
         # Set delimiters to variables
