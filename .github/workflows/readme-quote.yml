@@ -34,10 +34,10 @@ jobs:
       run: |
         set +e
         git diff --quiet README.md
-        echo "diff_exitcode=$?" >> $GITHUB_ENV
+        echo "DIFFEXITCODE=$?" >> $GITHUB_OUTPUT
     - name: Commit and push changes if README changed
       run: |
-        echo "The code we got from diff exit is {{ env.diff_exitcode }}"
+        echo "The code we got from diff exit is ${{ steps.check_readme_diff.outputs.DIFFEXITCODE }}"
         # git config --local user.email "github-actions@example.com"
         # git config --local user.name "GitHub Actions"
         # git diff --quiet || (git add README.md && git commit -m "Added new quote to README")
