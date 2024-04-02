@@ -33,13 +33,13 @@ jobs:
       id: check_readme_diff
       run: |
         STATUSOUTPUT=$(git status | tr '\n' ' ')
-        echo $STATUSOUTPUT
+        # echo $STATUSOUTPUT
         echo "STATUSOUTPUT=$STATUSOUTPUT" >> $GITHUB_OUTPUT
     - name: Commit and push changes if README changed
       if: contains(format('modified{0} README.md',':'), ${{ steps.check_readme_diff.outputs.STATUSOUTPUT }})
       run: |
         echo "Git status shows a change to README"
-        # git config --local user.email "github-actions@example.com"
-        # git config --local user.name "GitHub Actions"
-        # git diff --quiet || (git add README.md && git commit -m "Added new quote to README")
-        # git push origin master
+        git config --local user.email "github-actions@example.com"
+        git config --local user.name "GitHub Actions"
+        git diff --quiet || (git add README.md && git commit -m "Added new quote to README")
+        git push origin master
