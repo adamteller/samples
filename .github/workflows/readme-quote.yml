@@ -30,8 +30,9 @@ jobs:
         # Add the new quote to the README file
         printf "$start_delimiter\n$QUOTE\n$end_delimiter\n" >> README.md
     - name: Get Git Diff of README
+      id: check_readme_diff
       run: |
-        MYDIFF=$(git diff README.md)
+        MYDIFF=$(git diff --quiet README.md)
         # exits with a 1 if there was a diff
         echo "My Diff is $MYDIFF"
     - name: Commit and push changes if README changed
