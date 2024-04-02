@@ -33,7 +33,7 @@ jobs:
       id: check_readme_diff
       run: |
         set +e
-        STATUSOUTPUT=$(git status | tr '\n' ' ')
+        STATUSOUTPUT=$(echo git status | tr '\n' ' ')
         echo "STATUSOUTPUT=$STATUSOUTPUT" >> $GITHUB_OUTPUT
     - name: Commit and push changes if README changed
       run: |
