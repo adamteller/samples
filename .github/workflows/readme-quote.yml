@@ -36,7 +36,7 @@ jobs:
         echo $STATUSOUTPUT
         echo "STATUSOUTPUT=$STATUSOUTPUT" >> $GITHUB_OUTPUT
     - name: Commit and push changes if README changed
-      if: contains('README.md', ${{ steps.check_readme_diff.outputs.STATUSOUTPUT }})
+      if: contains(format('modified{0} README.md',':'), ${{ steps.check_readme_diff.outputs.STATUSOUTPUT }})
       run: |
         echo "Git status shows a change to README"
         # git config --local user.email "github-actions@example.com"
