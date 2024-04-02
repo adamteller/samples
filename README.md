@@ -1,5 +1,5 @@
 # samples
 Various Samples of work/projects/undertakings
 <!-- start-quote -->
->Silence is Goldeny but the right words count
+>Silence is Golden, and the right words are more better
 <!-- end-quote -->
