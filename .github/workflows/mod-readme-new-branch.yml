@@ -1,0 +1,43 @@
+on:
+  push:
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+name: change-readme-create-new-branch
+
+jobs:
+  add_quote:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Get an inspirational quote
+      run: |
+        QUOTE="This quote is fetched from a remote api using CURL"
+        echo "$QUOTE"
+
+    - name: Update quote in readme
+      run: |-
+        # Set a default quote if the 
+        echo "${QUOTE:=>Silence is Golden, and the right words are more better}"
+        # Disable interpreting exclamation mark! as a command
+        histchars=
+        # Set delimiters to variables
+        start_delimiter="<!-- start-quote -->"
+        end_delimiter="<!-- end-quote -->"
+        # Remove previous quote with its delimter
+        sed -i "/$start_delimiter/,/$end_delimiter/d" README.md
+        # Add the new quote to the README file
+        printf "$start_delimiter\n$QUOTE\n$end_delimiter\n" >> README.md
+
+    - name: Create a new branch 
+      id: create_branch
+      uses: lablnet/create-branch-from-tag@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+        tag_name: ${{ github.ref }}
+        owner: ${{ github.repository_owner }} # https://docs.github.com/en/actions/learn-github-actions/contexts#example-contents-of-the-github-context
+        repo: ${{ github.event.repository.name }} # https://www.reddit.com/r/github/comments/tjkj6f/get_repo_name_on_github_actions_without_owner/
