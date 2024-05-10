@@ -2,6 +2,12 @@ name: change-readme-create-merge-request
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: Select the environment
+        default: jersey
+        options: ["jersey", "statenisland"]
 
 jobs:
   add_quote:
