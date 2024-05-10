@@ -1,9 +1,7 @@
-name: change-readme-create-new-branch
+name: change-readme-create-merge-request
 
 on:
-  push:
-    tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+  workflow_dispatch:
 
 jobs:
   add_quote:
@@ -20,6 +18,8 @@ jobs:
 
     - name: Update quote in readme
       run: |-
+        ###### if workbranch does not exist, create it
+        gh create -B workbranch
         # Set a default quote if the 
         echo "${QUOTE:=>Silence is Golden, and the right words are more better}"
         # Disable interpreting exclamation mark! as a command
@@ -32,7 +32,7 @@ jobs:
         # Add the new quote to the README file
         printf "$start_delimiter\n$QUOTE\n$end_delimiter\n" >> README.md
 
-    - name: Create a new branch 
-      id: create_branch
-      run: gh pr create -B base_branch -H branch_to_merge --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
+    - name: Create Merge Request
+      id: create_mr
+      run: gh pr create -B master -H workbranch --title 'Merge workbranch into master' --body 'Created by Github action'
       
