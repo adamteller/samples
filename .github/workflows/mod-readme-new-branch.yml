@@ -20,7 +20,7 @@ jobs:
       run: |-
         ###### if workbranch does not exist, create it
         git checkout -B workbranch
-        # Set a default quote if the 
+        # Set a default quote  
         echo "${QUOTE:=>Silence is Golden, and the right words are more better}"
         # Disable interpreting exclamation mark! as a command
         histchars=
@@ -30,11 +30,17 @@ jobs:
         # Remove previous quote with its delimter
         sed -i "/$start_delimiter/,/$end_delimiter/d" README.md
         # Add the new quote to the README file
-        printf "$start_delimiter\n$QUOTE\n$end_delimiter\n" >> README.md
+        printf "$start_delimiter\n$QUOTE\n$(date +'%Y-%m-%dT%H:%M:%S')\n$end_delimiter\n" >> README.md
+
 
     - name: Create Merge Request
       id: create_mr
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-      run: gh pr create -B master -H workbranch --title 'Merge workbranch into master' --body 'Created by Github action'
+      run: |-
+        git config --local user.email "github-actions@example.com"
+        git config --local user.name "GitHub Actions"
+        git diff --quiet || (git add README.md && git commit -m "Added new quote to README")
+        git push origin workbranch
+        gh pr create -B master -H workbranch --title 'Merge workbranch into master' --body 'Created by Github action'
       
