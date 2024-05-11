@@ -1,5 +1,5 @@
 name: change-readme-create-merge-request
-run-name: Change Readme & Create Pull Request at ${{ github.event.repository.created_at }}
+run-name: Change Readme & Create Pull Request
 on:
   workflow_dispatch:
 
@@ -48,7 +48,7 @@ jobs:
       if: ${{ steps.commit_and_push.outcome }} != 'success'
       run: |-
         echo "Cannot create merge request"
-        git branch -D workbranch
+        git worktree remove -f workbranch
         exit 1
 
     - name: Create Merge Request
