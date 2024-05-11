@@ -49,7 +49,7 @@ jobs:
         echo "Result of [previous] step: ${{ steps.commit_and_push.outcome }}"
 
     - name: Check on failures
-      if: ${{ steps.commit_and_push.outcome }} == 'failure'
+      if: steps.commit_and_push.outcome == 'failure'
       run: |-
         echo "Cannot create merge request due to commit and push failure."
         git worktree prune
