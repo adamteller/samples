@@ -32,10 +32,9 @@ jobs:
         sed -i "/$start_delimiter/,/$end_delimiter/d" README.md
         # Add the new quote to the README file
         printf "$start_delimiter\n$QUOTE\n$end_delimiter\n" >> README.md
-
-
-    - name: Create Merge Request
-      id: create_mr
+        
+    - name: Commit and Push
+      id: commit_and_push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
       run: |-
@@ -43,6 +42,19 @@ jobs:
         git config --local user.name "GitHub Actions"
         git diff --quiet || (git add README.md && git commit -m "Added new quote to README")
         git push origin workbranch
+        continue-on-error: true
+
+    - name: Check on failures
+      if: steps.commit_and_push.outcome != 'success'
+      run: |-
+        echo "Cannot create merge request"
+        exit 1
+
+    - name: Create Merge Request
+      id: create_mr
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+      run: |-
         gh pr create -B master -H workbranch --title "Request to merge workbranch into master ${{ github.event.repository.updated_at }}"\
          --body "Created by Github action at: ${{ github.event.repository.updated_at }}"
       
