@@ -23,7 +23,7 @@ jobs:
         git checkout -B workbranch
         
         # Set a default quote  
-        echo "${QUOTE:=>Silence is Golden, and just the right words are more better}"
+        echo "${QUOTE:=>Silence is Golden, and just the right amound words are more better}"
         # Disable interpreting exclamation mark! as a command
         histchars=
         # Set delimiters to variables
