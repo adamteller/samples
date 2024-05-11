@@ -49,7 +49,7 @@ jobs:
       run: |-
         echo "Cannot create merge request due to commit and push failure."
         git worktree prune
-        git worktree remove -f workbranch
+        # git worktree remove -f workbranch
         git checkout master
         git branch -D workbranch
         exit 1
