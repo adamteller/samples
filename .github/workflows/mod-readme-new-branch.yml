@@ -23,7 +23,7 @@ jobs:
         git checkout -B workbranch
         
         # Set a default quote  
-        echo "${QUOTE:=>Silence is Golden, and just the right amound words are more better}"
+        echo "${QUOTE:=>Silence is Golden, and the right amound words are more better}"
         # Disable interpreting exclamation mark! as a command
         histchars=
         # Set delimiters to variables
@@ -49,7 +49,7 @@ jobs:
         echo "Result of [previous] step: ${{ steps.commit_and_push.outcome }}"
 
     - name: Check on failures
-      if: steps.commit_and_push.outcome == 'failure'
+      if: ${{ steps.commit_and_push.outcome }} == 'failure'
       run: |-
         echo "Cannot create merge request due to commit and push failure."
         git worktree prune
