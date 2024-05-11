@@ -50,6 +50,7 @@ jobs:
         echo "Cannot create merge request due to commit and push failure."
         git worktree prune
         git worktree remove -f workbranch
+        git checkout master
         git branch -d workbranch
         exit 1
 
