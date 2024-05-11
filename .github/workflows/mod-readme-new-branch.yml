@@ -48,6 +48,7 @@ jobs:
       if: steps.commit_and_push.outcome != 'success'
       run: |-
         echo "Cannot create merge request"
+        git branch -D workbranch
         exit 1
 
     - name: Create Merge Request
