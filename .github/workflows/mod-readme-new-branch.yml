@@ -52,6 +52,7 @@ jobs:
       if: ${{ steps.commit_and_push.outcome }} != 'success'
       run: |-
         echo "Cannot create merge request due to commit and push failure."
+        echo "To repeat, the result of [previous] step: ${{ steps.commit_and_push.outcome }}"
         # git worktree prune
         git checkout master
         git push origin --delete workbranch
