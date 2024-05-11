@@ -49,11 +49,11 @@ jobs:
         echo "Result of [previous] step: ${{ steps.commit_and_push.outcome }}"
 
     - name: Check on failures
-      if: ${{ steps.commit_and_push.outcome }} != 'success'
+      if: always() && steps.commit_and_push.outcome == 'failure'
       run: |-
         echo "Cannot create merge request due to commit and push failure."
         echo "To repeat, the result of [previous] step: ${{ steps.commit_and_push.outcome }}"
-        # git worktree prune
+        git worktree prune
         git checkout master
         git push origin --delete workbranch
         exit 1
