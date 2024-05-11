@@ -51,7 +51,7 @@ jobs:
         git worktree prune
         # git worktree remove -f workbranch
         git checkout master
-        git branch -d workbranch
+        git branch -D workbranch
         exit 1
 
     - name: Create Merge Request
