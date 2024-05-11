@@ -47,8 +47,9 @@ jobs:
     - name: Check on failures
       if: ${{ steps.commit_and_push.outcome }} != 'success'
       run: |-
-        echo "Cannot create merge request"
+        echo "Cannot create merge request due to commit and push failure."
         git worktree prune
+        git worktree remove
         exit 1
 
     - name: Create Merge Request
