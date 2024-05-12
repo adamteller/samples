@@ -42,7 +42,7 @@ jobs:
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"
         # git diff --quiet || (git add README.md && git commit -m "Added new quote to README")
-        echo "DIFFRESULT=$(git diff --quiet)" >> $GITHUB_ENV
+        echo "DIFFRESULT=$(git diff)" >> $GITHUB_ENV
         # git add README.md && git commit -m "Added new quote to README"
         # git push origin workbranch
       
