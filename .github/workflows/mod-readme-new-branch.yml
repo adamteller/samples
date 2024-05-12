@@ -21,7 +21,6 @@ jobs:
       run: |-
         ###### if workbranch does not exist, create it
         git checkout -B workbranch
-        git pull
         
         # Set a default quote  
         echo "${QUOTE:=>Silence is very Golden, and the right amound words are more better}"
