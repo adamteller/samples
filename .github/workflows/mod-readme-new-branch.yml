@@ -59,6 +59,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
       run: |-
+        echo "Here was the diff: ${{ github.env.DIFF }}"
         gh pr create -B master -H workbranch --title "Request to merge workbranch into master ${{ github.event.repository.updated_at }}"\
          --body "Created by Github action at: ${{ github.event.repository.updated_at }}"
       
