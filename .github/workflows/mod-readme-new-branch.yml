@@ -46,7 +46,7 @@ jobs:
       
     - name: Show the diff result
       run: |-
-        echo "The result from previous step ${{ steps.commit_and_push.conclusion }}"
+        echo "STD OUT from previous step ${{ steps.commit_and_push.outputs.stdout }}"
 
     - name: Check on failures
       if: steps.commit_and_push.outcome == 'failure'
