@@ -42,11 +42,12 @@ jobs:
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"
         git diff --quiet || (git add README.md && git commit -m "Added new quote to README")
+        echo "DIFF=$(git rev-parse --short origin/workbranch)" >> $GITHUB_ENV
         git push origin workbranch
       
     - name: Show the diff result
       run: |-
-        echo "STD OUT from previous step ${{ steps.commit_and_push.outputs.stdout }}"
+        echo "STD OUT from previous step ${{ github.env.DIFF }}"
 
     - name: Check on failures
       if: steps.commit_and_push.outcome == 'failure'
