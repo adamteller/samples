@@ -41,15 +41,12 @@ jobs:
       run: |-
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"
-        # git diff --quiet || (git add README.md && git commit -m "Added new quote to README")
-        echo "DIFFRESULT=$(git diff --quiet)" >> $GITHUB_ENV
-        echo "COMMRESULT=$(git add README.md && git commit -m 'Added new quote to README')" >> $GITHUB_ENV
-        # git push origin workbranch
+        git diff --quiet || (git add README.md && git commit -m "Added new quote to README")
+        git push origin workbranch
       
     - name: Show the diff result
       run: |-
-        echo "The diff from commit and push: ${{ github.env.DIFFRESULT }}"
-        echo "The comm result: ${{ github.env.COMMRESULT }}"
+        echo "The result from previous step ${{ steps.commit_and_push.conclusion }}"
 
     - name: Check on failures
       if: steps.commit_and_push.outcome == 'failure'
