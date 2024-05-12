@@ -21,6 +21,7 @@ jobs:
       run: |-
         ###### if workbranch does not exist, create it
         git checkout -B workbranch
+        git pull
         
         # Set a default quote  
         echo "${QUOTE:=>Silence is very Golden, and the right amound words are more better}"
@@ -55,10 +56,9 @@ jobs:
         git worktree prune
         git checkout master
         git push origin --delete workbranch
-        exit 1
 
     - name: Create Merge Request
-      if: ${{ steps.commit_and_push.outcome }} == 'success'
+      if: steps.commit_and_push.outcome == 'success'
       id: create_mr
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
