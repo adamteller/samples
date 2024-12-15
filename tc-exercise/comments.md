@@ -11,7 +11,7 @@ Anything printed via `console.log('something');` goes to std out.
 
 
 ## What are we trying to accomplish in this neat exercise?
-- Given several data sources (.csv files), our task is to populate the second column of file `slcsp.csv` 
+- Given several data sources (.csv files), populate the second column of file `slcsp.csv` and emit to std out. 
 - The value of column 2 should be the second lowest silver cost plan (rate) for the zip code listed in column 1 of `slcsp.csv`.
 - If an appropriate value cannot be derived from mining the data, a blank is expected.
 
@@ -67,6 +67,6 @@ Resulting Data for arbitrary subset involving zip code 67118
 Full program would parse all the data
  and populate 2nd column of slcsp.csv
  with proper 2nd lowest Silver plan rate for each zip code.
-Properties`state` and `inferred_rate_area` (above) are optional.
+Properties `state` and `inferred_rate_area` (above) are optional.
 They support the arbitrary logic implementation.
 ```
