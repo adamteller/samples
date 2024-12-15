@@ -91,7 +91,7 @@ var csv_parse_1 = require("csv-parse");
         console.log("Full program would parse all the data");
         console.log(" and populate 2nd column of slcsp.csv");
         console.log(" with proper 2nd lowest Silver plan rate for each zip code.");
-        console.log("Properties`state` and `inferred_rate_area` (above) are optional.");
+        console.log("Properties `state` and `inferred_rate_area` (above) are optional.");
         console.log("They support the arbitrary logic implementation.");
     });
 })();
