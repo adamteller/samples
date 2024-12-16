@@ -21,8 +21,9 @@ Anything printed via `console.log('something');` goes to std out.
 - Get the "second lowest" value from the list of values for that given zip code.
 
 ## Explanation of current (and intentionally limited) solution approach:
-- In full transparency, the exercise is not complete. It does not write rate values to `slcsp.csv`
+- The original submission (for review) has an incomplete exercise.
 - I chose to go with "A conceptual route" and implemented thought process below in `index.ts`:  
+- Please click the link to see [follow-up-details](#follow-up-details) solution below.
 
 ### If we focus attention on a single zip code value in slcsp.csv ... 67118
 ### What can we infer/derive?  
@@ -70,3 +71,16 @@ Full program would parse all the data
 Properties `state` and `inferred_rate_area` (above) are optional.
 They support the arbitrary logic implementation.
 ```
+
+## Follow-up Details
+- The initial submission code file (`index.ts`) uses a "Proof of concept" approach given the request was to spend 3 hours solving.
+- After I submitted the links for viewing, I was inspired by the challenge to "Really solving this exercise".
+- To that end, I reviewed my code and found that the approach needed to be re-worked to meet requirements for presenting values.
+- I wanted to "expand" on most of the "good parts" of the code, so I created a similar but separate file `indexExp.ts` which compiles to `indexExp.js`.
+- The code in `indexExp.ts` uses a "dictionary" or "composite key lookup" strategy.
+
+## Running the full solution:
+- Compile `indexExp.ts` by invoking `tsc indexExp.ts`
+- Run the program by invoking `node indexExp.js` to see the solution in std out.
+- I found easy to compare results by redirecting output to a file using `node indexExp.js > checkfile.txt`.
+- The file `checkfile.txt` is available here in the project folder.
