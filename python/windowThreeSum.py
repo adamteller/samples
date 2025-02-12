@@ -1,4 +1,4 @@
- # This does a windowing or "running sum" of x elements at a time from a list.
+# This does a windowing or "running sum" of x elements at a time from a list.
 
 source_list     = [1, 22, 3, 4, 15, 6, 30]
 source_list_len = len(source_list)
